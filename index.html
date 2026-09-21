@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d9488">
+<title>Bereket Web Studio — Websites for Clinics, Hospitals & Hotels in Jigjiga</title>
+<meta name="description" content="I build fast, professional websites for clinics, hospitals, hotels, restaurants and schools across Jigjiga and the Somali Region. Prices start from 8,000 Birr.">
+<meta property="og:title" content="Bereket Web Studio — Websites for Clinics, Hospitals & Hotels">
+<meta property="og:description" content="Fast, mobile-first websites for healthcare and hospitality businesses in Jigjiga. Prices start from 8,000 Birr.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0d9488;
+    --teal-dark:#0f766e;
+    --teal-soft:#ccfbf1;
+    --ink:#0f172a;
+    --muted:#5a6b7b;
+    --line:#e6eaee;
+    --radius:14px;
+    --max:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+    background:#fff;color:var(--ink);
+    line-height:1.6;
+    padding-bottom:88px; /* space for floating WhatsApp button */
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(255,255,255,.88);
+    backdrop-filter:saturate(180%) blur(12px);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:16px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+  .logo-dot{width:10px;height:10px;border-radius:50%;background:var(--teal);flex:none}
+  .nav-links{display:none;gap:26px;font-size:14px;font-weight:500;color:var(--muted)}
+  .nav-links a:hover{color:var(--teal)}
+  .nav-cta{
+    font-size:14px;font-weight:600;background:var(--teal);color:#fff;
+    padding:9px 16px;border-radius:9px;white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--teal-dark)}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-weight:600;font-size:15px;padding:15px 24px;border-radius:11px;
+    border:1px solid transparent;cursor:pointer;transition:.18s;
+    font-family:inherit;text-align:center;
+  }
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 6px 18px -6px rgba(13,148,136,.55)}
+  .btn-primary:hover{background:var(--teal-dark);transform:translateY(-1px)}
+  .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark)}
+  .btn svg{flex:none}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 52px;border-bottom:1px solid var(--line)}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--teal-soft);color:var(--teal-dark);
+    font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:999px;
+    margin-bottom:22px;
+  }
+  .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex:none}
+  .hero h1{
+    font-size:clamp(1.85rem,5.6vw,3.1rem);
+    line-height:1.12;letter-spacing:-.028em;font-weight:800;
+    max-width:19ch;
+  }
+  .hero h1 .hl{color:var(--teal)}
+  .hero p.sub{
+    margin-top:20px;font-size:clamp(1rem,2.4vw,1.1rem);
+    color:var(--muted);max-width:56ch;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero-actions .btn{flex:1 1 220px}
+
+  .stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    margin-top:44px;padding-top:28px;border-top:1px solid var(--line);
+  }
+  .stat b{display:block;font-size:20px;font-weight:800;letter-spacing:-.02em}
+  .stat span{font-size:12.5px;color:var(--muted);line-height:1.35;display:block;margin-top:2px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:66px 0}
+  .eyebrow{
+    font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:12px;
+  }
+  h2{font-size:clamp(1.5rem,4vw,2.1rem);letter-spacing:-.025em;line-height:1.2;font-weight:800}
+  .lede{margin-top:12px;color:var(--muted);max-width:60ch;font-size:15.5px}
+
+  /* ---------- PORTFOLIO ---------- */
+  #work{border-bottom:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:36px}
+  .card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;background:#fff;transition:.22s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(15,23,42,.28);border-color:#d5dde4}
+  .thumb{
+    position:relative;aspect-ratio:4/3;overflow:hidden;
+    background:linear-gradient(150deg,#f0fdfa 0%,#e0f2f1 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .thumb-fallback{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    padding:20px;text-align:center;font-weight:700;font-size:14px;
+    color:var(--teal-dark);opacity:.55;letter-spacing:-.01em;
+  }
+  .thumb img{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:top center;
+    transition:transform 2.6s cubic-bezier(.22,.61,.36,1);
+  }
+  .card:hover .thumb img{transform:translateY(-34%)}
+  .card-body{padding:20px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .tag{
+    align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.07em;
+    text-transform:uppercase;color:var(--teal-dark);
+    background:var(--teal-soft);padding:4px 10px;border-radius:6px;
+  }
+  .card h3{font-size:17px;font-weight:700;letter-spacing:-.015em;line-height:1.3}
+  .card p{font-size:14px;color:var(--muted);line-height:1.55}
+  .card-link{
+    margin-top:auto;padding-top:12px;font-size:14px;font-weight:600;
+    color:var(--teal);display:inline-flex;align-items:center;gap:6px;
+  }
+  .card-link:hover{color:var(--teal-dark)}
+  .card-link svg{transition:transform .18s}
+  .card-link:hover svg{transform:translateX(3px)}
+  .tech{font-size:12px;color:#93a2b0;font-weight:500}
+
+  /* ---------- PRICING ---------- */
+  #pricing{border-bottom:1px solid var(--line);background:#fcfdfd}
+  .plans{display:grid;grid-template-columns:1fr;gap:20px;margin-top:36px}
+  .plan{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;position:relative;display:flex;flex-direction:column;
+  }
+  .plan.featured{border:2px solid var(--teal);box-shadow:0 20px 44px -26px rgba(13,148,136,.5)}
+  .popular{
+    position:absolute;top:-11px;left:22px;
+    background:var(--teal);color:#fff;font-size:10.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;padding:4px 11px;border-radius:999px;
+  }
+  .plan-name{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+  .plan-price{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-top:10px;line-height:1}
+  .plan-price small{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0}
+  .plan ul{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:11px}
+  .plan li{font-size:14px;color:#33475b;display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+  .plan li svg{flex:none;margin-top:3px;color:var(--teal)}
+  .plan .btn{margin-top:24px;width:100%}
+  .note{
+    margin-top:22px;font-size:13.5px;color:var(--muted);
+    background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 16px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  #about{border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr;gap:28px;margin-top:32px;align-items:start}
+  .about-text p{font-size:15.5px;color:#33475b;margin-bottom:14px}
+  .about-text p:last-child{margin-bottom:0}
+  .langs{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .lang{
+    font-size:12.5px;font-weight:600;color:var(--teal-dark);
+    background:var(--teal-soft);padding:6px 12px;border-radius:999px;
+  }
+  .photo-slot{
+    aspect-ratio:1/1;border-radius:var(--radius);
+    background:linear-gradient(150deg,#f0fdfa,#e0f2f1);
+    border:1px dashed #99d6cf;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:24px;font-size:13px;color:var(--teal-dark);
+    font-weight:600;line-height:1.5;
+  }
+
+  /* ---------- CONTACT ---------- */
+  #contact{text-align:center;padding-bottom:80px}
+  #contact h2{max-width:22ch;margin:0 auto}
+  #contact .lede{margin-left:auto;margin-right:auto}
+  .contact-actions{
+    display:flex;flex-direction:column;gap:12px;
+    max-width:420px;margin:32px auto 0;
+  }
+  .contact-actions .btn{width:100%}
+  .contact-meta{
+    margin-top:26px;font-size:14px;color:var(--muted);
+    display:flex;flex-direction:column;gap:8px;align-items:center;
+  }
+  .contact-meta a:hover{color:var(--teal)}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);padding:26px 0;
+    font-size:13px;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;
+    max-width:var(--max);margin:0 auto;padding-left:20px;padding-right:20px;
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .fab{
+    position:fixed;right:18px;bottom:18px;z-index:100;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:56px;height:56px;border-radius:50%;
+    background:#25D366;color:#fff;
+    box-shadow:0 10px 26px -8px rgba(37,211,102,.7);
+    transition:.18s;
+  }
+  .fab:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(37,211,102,.85)}
+  .fab span{display:none;font-size:14.5px;font-weight:600;white-space:nowrap}
+  .fab svg{width:27px;height:27px;flex:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (min-width:560px){
+    .hero-actions .btn{flex:0 0 auto}
+    .fab{width:auto;height:56px;border-radius:999px;padding:0 22px}
+    .fab span{display:inline}
+  }
+  @media (min-width:640px){
+    .nav-links{display:flex}
+    .grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (min-width:860px){
+    section{padding:80px 0}
+    .hero{padding:86px 0 70px}
+    .plans{grid-template-columns:repeat(3,1fr)}
+    .plan.featured{transform:scale(1.035)}
+    .about-grid{grid-template-columns:1.7fr 1fr;gap:44px}
+    .contact-actions{flex-direction:row;max-width:none;justify-content:center}
+    .contact-actions .btn{width:auto}
+    #contact{padding-bottom:96px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#" class="logo"><span class="logo-dot"></span>Bereket Web Studio</a>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/251941813748?text=Hello%20Bereket%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener">Hire me</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="badge"><span class="badge-dot"></span>Web developer &middot; Jigjiga, Somali Region</div>
+
+    <h1>I build fast, professional websites for clinics, hospitals, hotels, restaurants and schools across <span class="hl">Jigjiga and the Somali Region</span>.</h1>
+
+    <p class="sub">Mobile-first, quick to load, and built to do one job: turn visitors into phone calls, WhatsApp messages and bookings. Fixed prices, clear timelines, no guesswork.</p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://wa.me/251941813748?text=Hello%20Bereket%2C%20I%20saw%20your%20portfolio%20and%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="#work">See my work</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>4 live sites</b><span>Healthcare businesses online</span></div>
+      <div class="stat"><b>From 8,000 Br</b><span>Fixed, upfront pricing</span></div>
+      <div class="stat"><b>Mobile-first</b><span>Built for how clients browse</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">Selected work</div>
+    <h2>Live websites I've built</h2>
+    <p class="lede">Real sites, running right now. Tap any card to open the live version and see how it works on your phone.</p>
+
+    <div class="grid">
+
+      <!-- 1. NEJASH HOSPITAL -->
+      <article class="card">
+        <div class="thumb">
+          <span class="thumb-fallback">Nejash Hospital</span>
+          <img src="images/nejash.jpg" alt="Screenshot of the Nejash Hospital website" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-body">
+          <span class="tag">Hospital</span>
+          <h3>Nejash Hospital</h3>
+          <p>A complete hospital site with departments, services, doctor information and emergency contact details — built mobile-first for patients searching on their phones.</p>
+          <span class="tech">HTML &middot; CSS &middot; JavaScript</span>
+          <a class="card-link" href="https://africantycoons1-spec.github.io/NEJASH-HOSPITAL/" target="_blank" rel="noopener">
+            View live site
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 2. DR. ABDI DENTAL -->
+      <article class="card">
+        <div class="thumb">
+          <span class="thumb-fallback">Dr. Abdi Specialty Dental Clinic</span>
+          <img src="images/abdi-dental.jpg" alt="Screenshot of the Dr. Abdi Specialty Dental Clinic website" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-body">
+          <span class="tag">Dental clinic</span>
+          <h3>Dr. Abdi Specialty Dental Clinic</h3>
+          <p>A clean dental clinic site with treatment pages, an appointment request form and one-tap WhatsApp booking for new patients.</p>
+          <span class="tech">HTML &middot; CSS &middot; JavaScript</span>
+          <a class="card-link" href="https://africantycoons1-spec.github.io/Dr.-Abdi-Specialty-Dental-Clinic/" target="_blank" rel="noopener">
+            View live site
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 3. YILAK -->
+      <article class="card">
+        <div class="thumb">
+          <span class="thumb-fallback">Yilak Specialty Clinic</span>
+          <img src="images/yilak.jpg" alt="Screenshot of the Yilak Specialty Clinic website" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-body">
+          <span class="tag">Clinic</span>
+          <h3>Yilak Specialty Clinic</h3>
+          <p>A specialty clinic site with a clear service layout, location map and direct call buttons so patients can reach the clinic in one tap.</p>
+          <span class="tech">HTML &middot; CSS &middot; JavaScript</span>
+          <a class="card-link" href="https://africantycoons1-spec.github.io/Yilak-Speciality-Clinic/" target="_blank" rel="noopener">
+            View live site
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- 4. MESH -->
+      <article class="card">
+        <div class="thumb">
+          <span class="thumb-fallback">Mesh Clinic</span>
+          <img src="images/mesh.jpg" alt="Screenshot of the Mesh Clinic website" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="card-body">
+          <span class="tag">Clinic</span>
+          <h3>Mesh Clinic</h3>
+          <p>A modern clinic site with a service overview, photo gallery and simple contact options that make it easy for new patients to get in touch.</p>
+          <span class="tech">HTML &middot; CSS &middot; JavaScript</span>
+          <a class="card-link" href="https://africantycoons1-spec.github.io/mesh-clinic-website/" target="_blank" rel="noopener">
+            View live site
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Packages</div>
+    <h2>Simple, fixed pricing</h2>
+    <p class="lede">No hourly rates, no surprises. Pick a package, tell me about your business, and I'll have your site live within days.</p>
+
+    <div class="plans">
+
+      <div class="plan">
+        <div class="plan-name">Basic</div>
+        <div class="plan-price">8,000 <small>Birr</small></div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Up to 5 pages</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Mobile-friendly design</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>WhatsApp click-to-chat button</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Google Maps location</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/251941813748?text=Hello%20Bereket%2C%20I%27m%20interested%20in%20the%20Basic%20package%20(8%2C000%20Birr)." target="_blank" rel="noopener">Choose Basic</a>
+      </div>
+
+      <div class="plan featured">
+        <span class="popular">Most popular</span>
+        <div class="plan-name">Standard</div>
+        <div class="plan-price">15,000 <small>Birr</small></div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Unlimited pages</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Booking request form</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Photo gallery</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SEO setup so patients find you on Google</li>
+        </ul>
+        <a class="btn btn-primary" href="https://wa.me/251941813748?text=Hello%20Bereket%2C%20I%27m%20interested%20in%20the%20Standard%20package%20(15%2C000%20Birr)." target="_blank" rel="noopener">Choose Standard</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">25,000 <small>Birr</small></div>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Standard</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Full online booking system</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>3 languages</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Admin panel to update content yourself</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/251941813748?text=Hello%20Bereket%2C%20I%27m%20interested%20in%20the%20Premium%20package%20(25%2C000%20Birr)." target="_blank" rel="noopener">Choose Premium</a>
+      </div>
+
+    </div>
+
+    <p class="note"><strong>Prices start from 8,000 Birr.</strong> Every package includes hosting setup, your WhatsApp button, and Google Maps. Not sure which one fits? Message me and I'll tell you honestly.</p>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2>Who you're working with</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm Bereket, a web developer based in Jigjiga. I build clean, fast websites for healthcare businesses, hotels, restaurants and schools across the Somali Region.</p>
+        <p>I work directly with you — no agencies, no middlemen. I speak English and Amharic, and I have Somali and Afan Oromo translators on hand, so nothing gets lost between us.</p>
+        <p>Every site I build is mobile-first, loads in seconds on a normal phone connection, and is designed around one goal: bringing you more customers.</p>
+
+        <div class="langs">
+          <span class="lang">English</span>
+          <span class="lang">Amharic</span>
+          <span class="lang">Somali (via translator)</span>
+          <span class="lang">Afan Oromo (via translator)</span>
+        </div>
+      </div>
+
+      <!-- Replace this block with <img src="images/bereket.jpg" alt="Bereket" style="border-radius:14px"> when you have a photo -->
+      <div class="photo-slot">Your photo goes here<br>images/bereket.jpg</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Get started</div>
+    <h2>Ready to get your business online?</h2>
+    <p class="lede">Send me a message with your business name and what you need. I'll reply with a price and a timeline — usually the same day.</p>
+
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="https://wa.me/251941813748?text=Hello%20Bereket%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Message me on WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="mailto:bekyeshetu2000@gmail.com?subject=Website%20enquiry">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        Send an email
+      </a>
+    </div>
+
+    <div class="contact-meta">
+      <a href="tel:+251941813748">+251 94 181 3748</a>
+      <a href="mailto:bekyeshetu2000@gmail.com">bekyeshetu2000@gmail.com</a>
+      <span>Jigjiga, Somali Region, Ethiopia</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>&copy; <span id="yr">2025</span> Bereket Web Studio</span>
+  <span>Jigjiga, Ethiopia</span>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a class="fab" href="https://wa.me/251941813748?text=Hello%20Bereket%2C%20I%27d%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  <span>Chat with me</span>
+</a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
