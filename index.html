@@ -8,9 +8,9 @@
 <meta name="description" content="I build fast, professional websites for clinics, hospitals, hotels, restaurants and schools across Jigjiga and the Somali Region. Prices start from 8,000 Birr.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
 <style>
   :root{
     --teal:#0d9488;--teal-dark:#0f766e;--teal-soft:#ccfbf1;
@@ -111,7 +111,7 @@
   .card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:.22s;display:flex;flex-direction:column}
   .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(15,23,42,.28);border-color:#d5dde4}
   .thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(150deg,#f0fdfa 0%,#e0f2f1 100%);border-bottom:1px solid var(--line)}
-  .thumb-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font-weight:700;font-size:14px;color:var(--teal-dark);opacity:.55}
+  .thumb-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font-weight:700;font-size:14px;color:var(--teal-dark);opacity:.75}
   .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform 2.6s cubic-bezier(.22,.61,.36,1)}
   .card:hover .thumb img{transform:translateY(-34%)}
   .card-body{padding:20px;display:flex;flex-direction:column;gap:9px;flex:1}
@@ -123,7 +123,7 @@
   .card-link:hover{color:var(--teal-dark)}
   .card-link svg{transition:transform .18s}
   .card-link:hover svg{transform:translateX(3px)}
-  .tech{font-size:12px;color:#93a2b0;font-weight:500}
+  .tech{font-size:12px;color:#64748b;font-weight:500}
 
   /* ---------- PRICING ---------- */
   #pricing{border-bottom:1px solid var(--line);background:#fcfdfd}
@@ -469,6 +469,15 @@
     function applyLang(lang){
       if (lang !== 'am') lang = 'en';
       html.setAttribute('lang', lang);
+
+      // Load Noto Sans Ethiopic only when Amharic is selected
+      if (lang === 'am' && !document.getElementById('noto-ethiopic')) {
+        var l = document.createElement('link');
+        l.id = 'noto-ethiopic';
+        l.rel = 'stylesheet';
+        l.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;600;700&display=swap';
+        document.head.appendChild(l);
+      }
 
       document.querySelectorAll('[data-en][data-am]').forEach(function(el){
         var val = el.getAttribute('data-' + lang);
